@@ -1,0 +1,70 @@
+<div class="container">
+
+    <div class="card my-3">
+        <div class="card-header">
+            Sign In
+        </div>
+        <div class="card-body d-flex flex-column">
+            
+                <div class="form-group">
+                    <label for="username">User Name</label>
+                    <input type="text" class="form-control" [ngClass]="{'is-invalid' : userNameCtrl.touched && userNameCtrl.errors}" placeholder="Enter Username" [formControl]="userNameCtrl" required> 
+                  </div>
+                  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" [ngClass]="{'is-invalid' : emailCtrl.touched && emailCtrl.errors}" placeholder="Enter Email" [formControl]="emailCtrl">
+                  <small id="emailHelp" class="form-text text-muted">name@example.com</small>
+                </div>
+                <form [formGroup]="addressForm">
+                <h5 class="h5">Address</h5>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" placeholder="Bangalore" formControlName="city">
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" placeholder="Karnataka" formControlName="state">
+                  </div>
+                  <div class="form-group">
+                    <label for="pincode">Pin code</label>
+                    <input type="number" class="form-control" placeholder="123456" formControlName="pin">
+                  </div>
+                
+              </form>
+              <div class="d-flex ml-auto">
+                <button type="button" class="btn btn-primary mr-3" (click)="addAddress()">Add Address</button>
+                <button type="button" class="btn btn-primary" (click)="deleteAddress()">Delete Address</button>
+              </div>
+        </div>
+        <div class="card-footer d-flex">
+          
+            <button [disabled]="userNameCtrl.errors && emailCtrl.errors" type="button" class="btn btn-primary ml-auto" (click)="registerUser()">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isLoading"></span>
+              Register</button>
+        </div>
+    </div>
+        
+</div>
+
+
+  <div *ngIf="addRecord" id="toast-wrapper" class="toast bg-success text-white show" style="position: fixed; top: 20px; right: 20px;" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000">
+    <div class="toast-header">
+      <i class="fa fa-user-o rounded mr-2"></i>
+      <strong class="mr-auto">Registration</strong>
+    </div>
+    <div class="toast-body">
+      Record added Successfully.
+    </div>
+  </div>
+
+  <div *ngIf="removeRecord" id="toast-wrapper" class="toast bg-danger text-white show" style="position: fixed; top: 20px; right: 20px;" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000">
+    <div class="toast-header">
+      <i class="fa fa-user-o rounded mr-2"></i>
+      <strong class="mr-auto">Registration</strong>
+    </div>
+    <div class="toast-body">
+      Record removed Successfully.
+    </div>
+  </div>
+

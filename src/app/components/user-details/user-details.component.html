@@ -1,0 +1,28 @@
+
+<ag-grid-angular
+   style="height: 85%"
+   class="ag-theme-alpine my-3 container"
+   [columnDefs]="columnDefs"
+   [rowData]="rowData"
+   [animateRows]="true"
+   [pagination] = "true"
+   [rowHeight] = "100"
+ ></ag-grid-angular>
+
+ <!-- Modal -->
+ <div *ngIf="isPopupVisible">
+ <div class="modal-backdrop fade" [ngClass]="isPopupVisible ? 'show d-block' : 'd-none'"></div>
+<div class="modal fade" [ngClass]="isPopupVisible ? 'show d-block' : ''" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          Record will be deleted permanently 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closePopup()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="deleteRecord()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
